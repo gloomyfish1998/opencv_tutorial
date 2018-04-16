@@ -45,4 +45,9 @@ CSDN博客地址： http://blog.csdn.net/jia20003
 
 51CTO学院课程主页：http://edu.51cto.com/lecturer/8837804.html 
 
+### OpenCV学堂 微信公众号
+![](CVSCHOOL.jpg)
+
+
+
 
