@@ -33,7 +33,7 @@ private:
 };
 
 int main(int argc, char** argv) {
-	Mat src = imread("D:/vcprojects/images/greenback.png");
+	/*Mat src = imread("D:/vcprojects/images/greenback.png");
 	VideoCapture capture;
 	capture.open("D:/vcprojects/images/sample.mp4");
 	namedWindow("input image", CV_WINDOW_AUTOSIZE);
@@ -58,8 +58,8 @@ int main(int argc, char** argv) {
 		}
 		imshow("result", src);
 	}
-	
-	//faceDemo();
+	*/
+	faceDemo();
 	waitKey(0);
 	return 0;
 }
