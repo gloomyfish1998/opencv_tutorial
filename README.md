@@ -10,12 +10,31 @@
 ## 贾志刚
 2004毕业于山东大学齐鲁软件学院，软件工程专业。主要专注于图像处理算法学习与研究，计算机视觉技术应用开发，深度学习在计算机视觉领域应用。两本书籍《Java数字图像处理-编程技巧与应用实践》、《OpenCV  Android开发实战》作者、51CTO学院特级讲师、CSDN博客专家、专注图像处理与计算机视觉领域研究与开发多年、专业技术博客访问量超过300万次、精通OpenCV、ImageJ开源框架、图像对象检测与识别等应用开发技术。在对象检测、医学细胞检测与识别、文本处理、图像搜索、人脸美化算法方面有深入研究、开发过多个图像处理算法模块并成功应用在医学检测与工业领域。
 
-![](zhigang.png)
+
+### 欢迎大家加入人工智能计算机视觉与深度学习社区
+### OpenCV研习社
+加入即送400+计算机视觉与深度学习论文。
+- 每周一到每周五分享OpenCV/tensorflow知识点学习（音频+文字+源码）
+- OpenCV+tensorflow真实案例代码分享
+- 直接向老师提问、每天答疑辅导
+- 系统化学习约300个知识点，从易到难、由浅入深
+- 计算机视觉与深度学习知识长文分享
+- 每天不到3毛钱，拥抱人工智能时代
+- Python与C++双语知识点分享
+- 建立计算机视觉相关人脉，认识更多同行，一起学习交流！
+- 计算机视觉论文PDF与学习资料PPT分享
+少看一场电影，少吃一顿大餐，就可以加持未来，99元学习就可以做到！
+![](OpenCVRD.png)
+
 
 ## 视频课程
 
 | 课程名称        | 语言          | 地址         |
 | ------------- |:-------------:| :-------------:|
+| Tensorflow零基础入门课程| Python| http://edu.51cto.com/course/14584.html |
+| OpenCV Python图像与视频分析教程| Python| http://edu.51cto.com/course/14029.html |
+| OpenCV Python图像处理进阶教程视频课程| Python| http://edu.51cto.com/course/13789.html |
+| OpenCV Python零基础入门视频教程| Python| http://edu.51cto.com/course/13680.html |
 | OpenCV4Android摄像头应用案例实战频教程| Android| http://edu.51cto.com/course/12700.html |
 | Python+OpenCV3.3图像处理视频教程| Python| http://edu.51cto.com/course/11324.html |
 | OpenCV3.3深度神经网络(DNN)模块-应用视频教程| C++| http://edu.51cto.com/course/11516.html |
