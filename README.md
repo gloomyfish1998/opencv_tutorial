@@ -31,6 +31,7 @@
 
 | 课程名称        | 语言          | 地址         |
 | ------------- |:-------------:| :-------------:|
+| Tensorflow Object Detection API对象检测教程| Python| http://edu.51cto.com/course/15208.html |
 | Tensorflow零基础入门课程| Python| http://edu.51cto.com/course/14584.html |
 | OpenCV Python图像与视频分析教程| Python| http://edu.51cto.com/course/14029.html |
 | OpenCV Python图像处理进阶教程视频课程| Python| http://edu.51cto.com/course/13789.html |
@@ -60,6 +61,14 @@ QQ:57558865 注明：opencv即可
 微信：gloomy_fish 注明 合作
 
 <b>非技术合作请勿加微信</b>
+<b>OpenCV研习社知识星球</b>
+>免费资料分享 400篇计算机视觉与深度学习论文
+每周一到每周五 分享OpenCV知识点学习（音频+文字+源码）
+不定时案例分析与OpenCV源码解读
+OpenCV知识点一对一答疑（语音+文字）
+项目指导与交流
+![](yxs.png)
+
 
 微博 ： http://weibo.com/u/3181256271
 
