@@ -25,9 +25,9 @@
 #      - OpenCV_INCLUDE_DIRS             : The OpenCV include directories.
 #      - OpenCV_COMPUTE_CAPABILITIES     : The version of compute capability.
 #      - OpenCV_ANDROID_NATIVE_API_LEVEL : Minimum required level of Android API.
-#      - OpenCV_VERSION                  : The version of this OpenCV build: "3.4.0"
-#      - OpenCV_VERSION_MAJOR            : Major version part of OpenCV_VERSION: "3"
-#      - OpenCV_VERSION_MINOR            : Minor version part of OpenCV_VERSION: "4"
+#      - OpenCV_VERSION                  : The version of this OpenCV build: "4.0.0"
+#      - OpenCV_VERSION_MAJOR            : Major version part of OpenCV_VERSION: "4"
+#      - OpenCV_VERSION_MINOR            : Minor version part of OpenCV_VERSION: "0"
 #      - OpenCV_VERSION_PATCH            : Patch version part of OpenCV_VERSION: "0"
 #      - OpenCV_VERSION_STATUS           : Development status of this build: ""
 #
@@ -45,9 +45,9 @@
 # ======================================================
 #  Version variables:
 # ======================================================
-SET(OpenCV_VERSION 3.4.0)
-SET(OpenCV_VERSION_MAJOR  3)
-SET(OpenCV_VERSION_MINOR  4)
+SET(OpenCV_VERSION 4.0.0)
+SET(OpenCV_VERSION_MAJOR  4)
+SET(OpenCV_VERSION_MINOR  0)
 SET(OpenCV_VERSION_PATCH  0)
 SET(OpenCV_VERSION_TWEAK  0)
 SET(OpenCV_VERSION_STATUS "")
@@ -80,7 +80,7 @@ set(OpenCV_CONFIG_PATH "${CMAKE_CURRENT_LIST_DIR}")
 get_filename_component(OpenCV_INSTALL_PATH "${OpenCV_CONFIG_PATH}/../../../" REALPATH)
 
 # Search packages for host system instead of packages for target system.
-# in case of cross compilation thess macro should be defined by toolchain file
+# in case of cross compilation this macro should be defined by toolchain file
 if(NOT COMMAND find_host_package)
     macro(find_host_package)
         find_package(${ARGN})
@@ -105,8 +105,8 @@ set(OpenCV_SHARED ON)
 # Enables mangled install paths, that help with side by side installs
 set(OpenCV_USE_MANGLED_PATHS FALSE)
 
-set(OpenCV_LIB_COMPONENTS opencv_calib3d;opencv_core;opencv_dnn;opencv_features2d;opencv_flann;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_shape;opencv_stitching;opencv_superres;opencv_video;opencv_videoio;opencv_videostab;opencv_aruco;opencv_bgsegm;opencv_bioinspired;opencv_ccalib;opencv_datasets;opencv_dpm;opencv_face;opencv_fuzzy;opencv_img_hash;opencv_line_descriptor;opencv_optflow;opencv_phase_unwrapping;opencv_plot;opencv_reg;opencv_rgbd;opencv_saliency;opencv_stereo;opencv_structured_light;opencv_surface_matching;opencv_text;opencv_tracking;opencv_xfeatures2d;opencv_ximgproc;opencv_xobjdetect;opencv_xphoto)
-set(OpenCV_INCLUDE_DIRS "${OpenCV_INSTALL_PATH}/include" "${OpenCV_INSTALL_PATH}/include/opencv")
+set(OpenCV_LIB_COMPONENTS opencv_calib3d;opencv_core;opencv_dnn;opencv_features2d;opencv_flann;opencv_gapi;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_stitching;opencv_video;opencv_videoio;opencv_aruco;opencv_bgsegm;opencv_bioinspired;opencv_ccalib;opencv_datasets;opencv_dnn_objdetect;opencv_dpm;opencv_face;opencv_fuzzy;opencv_hfs;opencv_img_hash;opencv_line_descriptor;opencv_optflow;opencv_phase_unwrapping;opencv_plot;opencv_reg;opencv_rgbd;opencv_saliency;opencv_shape;opencv_stereo;opencv_structured_light;opencv_superres;opencv_surface_matching;opencv_text;opencv_tracking;opencv_videostab;opencv_xfeatures2d;opencv_ximgproc;opencv_xobjdetect;opencv_xphoto)
+set(OpenCV_INCLUDE_DIRS "${OpenCV_INSTALL_PATH}/include")
 
 if(NOT TARGET opencv_core)
   include(${CMAKE_CURRENT_LIST_DIR}/OpenCVModules${OpenCV_MODULES_SUFFIX}.cmake)
@@ -225,7 +225,9 @@ foreach(__cvcomponent ${OpenCV_FIND_COMPONENTS})
     get_target_property(__implib_release opencv_world  IMPORTED_IMPLIB_RELEASE)
     get_target_property(__location_dbg opencv_world IMPORTED_LOCATION_DEBUG)
     get_target_property(__location_release opencv_world  IMPORTED_LOCATION_RELEASE)
+    get_target_property(__include_dir opencv_world INTERFACE_INCLUDE_DIRECTORIES)
     add_library(${__cvcomponent} SHARED IMPORTED)
+    set_target_properties(${__cvcomponent} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${__include_dir}")
     if(__location_dbg)
       set_property(TARGET ${__cvcomponent} APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
       set_target_properties(${__cvcomponent} PROPERTIES
@@ -258,7 +260,7 @@ endif()
 set(OpenCV_LIBRARIES ${OpenCV_LIBS})
 
 #
-# Some macroses for samples
+# Some macros for samples
 #
 macro(ocv_check_dependencies)
   set(OCV_DEPENDENCIES_FOUND TRUE)

@@ -51,7 +51,11 @@ This section describes experimental algorithms for 2d feature detection.
     @defgroup xfeatures2d_nonfree Non-free 2D Features Algorithms
 
 This section describes two popular algorithms for 2d feature detection, SIFT and SURF, that are
-known to be patented. Use them at your own risk.
+known to be patented. You need to set the OPENCV_ENABLE_NONFREE option in cmake to use those. Use them at your own risk.
+
+    @defgroup xfeatures2d_match Experimental 2D Features Matching Algorithm
+
+This section describes the GMS (Grid-based Motion Statistics) matching strategy.
 
 @}
 */
@@ -80,10 +84,9 @@ class CV_EXPORTS_W FREAK : public Feature2D
 {
 public:
 
-    enum
-    {
-        NB_SCALES = 64, NB_PAIRS = 512, NB_ORIENPAIRS = 45
-    };
+    static const int    NB_SCALES        = 64;
+    static const int    NB_PAIRS         = 512;
+    static const int    NB_ORIENPAIRS    = 45;
 
     /**
     @param orientationNormalized Enable orientation normalization.
@@ -193,12 +196,12 @@ DAISY::NRM_SIFT mean that descriptors are normalized for L2 norm equal to 1.0 bu
 class CV_EXPORTS_W DAISY : public Feature2D
 {
 public:
-    enum
+    enum NormalizationType
     {
         NRM_NONE = 100, NRM_PARTIAL = 101, NRM_FULL = 102, NRM_SIFT = 103,
     };
     CV_WRAP static Ptr<DAISY> create( float radius = 15, int q_radius = 3, int q_theta = 8,
-                int q_hist = 8, int norm = DAISY::NRM_NONE, InputArray H = noArray(),
+                int q_hist = 8, DAISY::NormalizationType norm = DAISY::NRM_NONE, InputArray H = noArray(),
                 bool interpolation = true, bool use_orientation = false );
 
     /** @overload
@@ -206,11 +209,11 @@ public:
      * @param keypoints of interest within image
      * @param descriptors resulted descriptors array
      */
-    virtual void compute( InputArray image, std::vector<KeyPoint>& keypoints, OutputArray descriptors ) = 0;
+    virtual void compute( InputArray image, std::vector<KeyPoint>& keypoints, OutputArray descriptors ) CV_OVERRIDE = 0;
 
     virtual void compute( InputArrayOfArrays images,
                           std::vector<std::vector<KeyPoint> >& keypoints,
-                          OutputArrayOfArrays descriptors );
+                          OutputArrayOfArrays descriptors ) CV_OVERRIDE;
 
     /** @overload
      * @param image image to extract descriptors
@@ -312,13 +315,21 @@ public:
     CV_WRAP static Ptr<VGG> create( int desc = VGG::VGG_120, float isigma = 1.4f,
                                     bool img_normalize = true, bool use_scale_orientation = true,
                                     float scale_factor = 6.25f, bool dsc_normalize = false );
-    /**
-     * @param image image to extract descriptors
-     * @param keypoints of interest within image
-     * @param descriptors resulted descriptors array
-     */
-    CV_WRAP virtual void compute( InputArray image, std::vector<KeyPoint>& keypoints, OutputArray descriptors ) = 0;
 
+    CV_WRAP virtual void setSigma(const float isigma) = 0;
+    CV_WRAP virtual float getSigma() const = 0;
+
+    CV_WRAP virtual void setUseNormalizeImage(const bool img_normalize) = 0;
+    CV_WRAP virtual bool getUseNormalizeImage() const = 0;
+
+    CV_WRAP virtual void setUseScaleOrientation(const bool use_scale_orientation) = 0;
+    CV_WRAP virtual bool getUseScaleOrientation() const = 0;
+
+    CV_WRAP virtual void setScaleFactor(const float scale_factor) = 0;
+    CV_WRAP virtual float getScaleFactor() const = 0;
+
+    CV_WRAP virtual void setUseNormalizeDescriptor(const bool dsc_normalize) = 0;
+    CV_WRAP virtual bool getUseNormalizeDescriptor() const = 0;
 };
 
 /** @brief Class implementing BoostDesc (Learning Image Descriptors with Boosting), described in
@@ -360,6 +371,12 @@ public:
 
     CV_WRAP static Ptr<BoostDesc> create( int desc = BoostDesc::BINBOOST_256,
                     bool use_scale_orientation = true, float scale_factor = 6.25f );
+
+    CV_WRAP virtual void setUseScaleOrientation(const bool use_scale_orientation) = 0;
+    CV_WRAP virtual bool getUseScaleOrientation() const = 0;
+
+    CV_WRAP virtual void setScaleFactor(const float scale_factor) = 0;
+    CV_WRAP virtual float getScaleFactor() const = 0;
 };
 
 
@@ -943,8 +960,34 @@ FastFeatureDetector::TYPE_5_8
 Detects corners using the FAST algorithm by @cite Rosten06 .
  */
 CV_EXPORTS void FASTForPointSet( InputArray image, CV_IN_OUT std::vector<KeyPoint>& keypoints,
-                      int threshold, bool nonmaxSuppression=true, int type=FastFeatureDetector::TYPE_9_16);
+                      int threshold, bool nonmaxSuppression=true, cv::FastFeatureDetector::DetectorType type=FastFeatureDetector::TYPE_9_16);
 
+
+//! @}
+
+
+//! @addtogroup xfeatures2d_match
+//! @{
+
+/** @brief GMS  (Grid-based Motion Statistics) feature matching strategy by @cite Bian2017gms .
+    @param size1 Input size of image1.
+    @param size2 Input size of image2.
+    @param keypoints1 Input keypoints of image1.
+    @param keypoints2 Input keypoints of image2.
+    @param matches1to2 Input 1-nearest neighbor matches.
+    @param matchesGMS Matches returned by the GMS matching strategy.
+    @param withRotation Take rotation transformation into account.
+    @param withScale Take scale transformation into account.
+    @param thresholdFactor The higher, the less matches.
+    @note
+        Since GMS works well when the number of features is large, we recommend to use the ORB feature and set FastThreshold to 0 to get as many as possible features quickly.
+        If matching results are not satisfying, please add more features. (We use 10000 for images with 640 X 480).
+        If your images have big rotation and scale changes, please set withRotation or withScale to true.
+ */
+
+CV_EXPORTS_W void matchGMS( const Size& size1, const Size& size2, const std::vector<KeyPoint>& keypoints1, const std::vector<KeyPoint>& keypoints2,
+                          const std::vector<DMatch>& matches1to2, CV_OUT std::vector<DMatch>& matchesGMS, const bool withRotation = false,
+                          const bool withScale = false, const double thresholdFactor = 6.0 );
 
 //! @}
 

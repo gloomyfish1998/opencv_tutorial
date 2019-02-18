@@ -19,9 +19,9 @@
 #      - OpenCV_LIBS                     : The list of libraries to link against.
 #      - OpenCV_INCLUDE_DIRS             : The OpenCV include directories.
 #      - OpenCV_COMPUTE_CAPABILITIES     : The version of compute capability
-#      - OpenCV_VERSION                  : The version of this OpenCV build: "3.4.0"
-#      - OpenCV_VERSION_MAJOR            : Major version part of OpenCV_VERSION: "3"
-#      - OpenCV_VERSION_MINOR            : Minor version part of OpenCV_VERSION: "4"
+#      - OpenCV_VERSION                  : The version of this OpenCV build: "4.0.0"
+#      - OpenCV_VERSION_MAJOR            : Major version part of OpenCV_VERSION: "4"
+#      - OpenCV_VERSION_MINOR            : Minor version part of OpenCV_VERSION: "0"
 #      - OpenCV_VERSION_PATCH            : Patch version part of OpenCV_VERSION: "0"
 #      - OpenCV_VERSION_STATUS           : Development status of this build: ""
 #
@@ -43,7 +43,7 @@ endif()
 
 if(NOT DEFINED OpenCV_STATIC)
   # look for global setting
-  if(BUILD_SHARED_LIBS)
+  if(NOT DEFINED BUILD_SHARED_LIBS OR BUILD_SHARED_LIBS)
     set(OpenCV_STATIC OFF)
   else()
     set(OpenCV_STATIC ON)
@@ -57,8 +57,35 @@ if(NOT DEFINED OpenCV_CUDA)
   endif()
 endif()
 
+function(check_one_config RES)
+  set(${RES} "" PARENT_SCOPE)
+  if(NOT OpenCV_RUNTIME OR NOT OpenCV_ARCH)
+    return()
+  endif()
+  set(candidates)
+  if(OpenCV_STATIC)
+    list(APPEND candidates "${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib")
+  endif()
+  if(OpenCV_CUDA)
+    list(APPEND candidates "gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib")
+  endif()
+  if(OpenCV_CUDA AND OpenCV_STATIC)
+    list(APPEND candidates "gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib")
+  endif()
+  list(APPEND candidates "${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib")
+  foreach(c ${candidates})
+    set(p "${OpenCV_CONFIG_PATH}/${c}")
+    if(EXISTS "${p}/OpenCVConfig.cmake")
+      set(${RES} "${p}" PARENT_SCOPE)
+      return()
+    endif()
+  endforeach()
+endfunction()
+
+get_filename_component(OpenCV_CONFIG_PATH "${CMAKE_CURRENT_LIST_FILE}" DIRECTORY)
+
 if(DEFINED OpenCV_ARCH AND DEFINED OpenCV_RUNTIME)
-  # custom overrided values
+  # custom overridden values
 elseif(MSVC)
   if(CMAKE_CL_64)
     set(OpenCV_ARCH x64)
@@ -82,6 +109,10 @@ elseif(MSVC)
     set(OpenCV_RUNTIME vc14)
   elseif(MSVC_VERSION MATCHES "^191[0-9]$")
     set(OpenCV_RUNTIME vc15)
+    check_one_config(has_VS2017)
+    if(NOT has_VS2017)
+      set(OpenCV_RUNTIME vc14) # selecting previous compatible runtime version
+    endif()
   endif()
 elseif(MINGW)
   set(OpenCV_RUNTIME mingw)
@@ -97,27 +128,12 @@ elseif(MINGW)
   endif()
 endif()
 
+check_one_config(OpenCV_LIB_PATH)
+
 if(NOT OpenCV_FIND_QUIETLY)
   message(STATUS "OpenCV ARCH: ${OpenCV_ARCH}")
   message(STATUS "OpenCV RUNTIME: ${OpenCV_RUNTIME}")
   message(STATUS "OpenCV STATIC: ${OpenCV_STATIC}")
-endif()
-
-get_filename_component(OpenCV_CONFIG_PATH "${CMAKE_CURRENT_LIST_FILE}" PATH)
-if(OpenCV_RUNTIME AND OpenCV_ARCH)
-  if(OpenCV_STATIC AND EXISTS "${OpenCV_CONFIG_PATH}/${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib/OpenCVConfig.cmake")
-    if(OpenCV_CUDA AND EXISTS "${OpenCV_CONFIG_PATH}/gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib/OpenCVConfig.cmake")
-      set(OpenCV_LIB_PATH "${OpenCV_CONFIG_PATH}/gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib")
-    else()
-      set(OpenCV_LIB_PATH "${OpenCV_CONFIG_PATH}/${OpenCV_ARCH}/${OpenCV_RUNTIME}/staticlib")
-    endif()
-  elseif(EXISTS "${OpenCV_CONFIG_PATH}/${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib/OpenCVConfig.cmake")
-    if(OpenCV_CUDA AND EXISTS "${OpenCV_CONFIG_PATH}/gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib/OpenCVConfig.cmake")
-      set(OpenCV_LIB_PATH "${OpenCV_CONFIG_PATH}/gpu/${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib")
-    else()
-      set(OpenCV_LIB_PATH "${OpenCV_CONFIG_PATH}/${OpenCV_ARCH}/${OpenCV_RUNTIME}/lib")
-    endif()
-  endif()
 endif()
 
 if(OpenCV_LIB_PATH AND EXISTS "${OpenCV_LIB_PATH}/OpenCVConfig.cmake")

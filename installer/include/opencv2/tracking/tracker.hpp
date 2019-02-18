@@ -525,11 +525,11 @@ class CV_EXPORTS_W Tracker : public virtual Algorithm
 {
  public:
 
-  virtual ~Tracker();
+  virtual ~Tracker() CV_OVERRIDE;
 
-  /** @brief Initialize the tracker with a know bounding box that surrounding the target
+  /** @brief Initialize the tracker with a known bounding box that surrounded the target
     @param image The initial frame
-    @param boundingBox The initial boundig box
+    @param boundingBox The initial bounding box
 
     @return True if initialization went succesfully, false otherwise
      */
@@ -537,7 +537,7 @@ class CV_EXPORTS_W Tracker : public virtual Algorithm
 
   /** @brief Update the tracker, find the new most likely bounding box for the target
     @param image The current frame
-    @param boundingBox The boundig box that represent the new target location, if true was returned, not
+    @param boundingBox The bounding box that represent the new target location, if true was returned, not
     modified otherwise
 
     @return True means that target was located and false means that tracker cannot locate target in
@@ -546,8 +546,8 @@ class CV_EXPORTS_W Tracker : public virtual Algorithm
      */
   CV_WRAP bool update( InputArray image, CV_OUT Rect2d& boundingBox );
 
-  virtual void read( const FileNode& fn )=0;
-  virtual void write( FileStorage& fs ) const=0;
+  virtual void read( const FileNode& fn ) CV_OVERRIDE = 0;
+  virtual void write( FileStorage& fs ) const CV_OVERRIDE = 0;
 
  protected:
 
@@ -627,8 +627,8 @@ class CV_EXPORTS TrackerStateEstimatorMILBoosting : public TrackerStateEstimator
   void setCurrentConfidenceMap( ConfidenceMap& confidenceMap );
 
  protected:
-  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps );
-  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps );
+  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
+  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
 
  private:
   uint max_idx( const std::vector<float> &v );
@@ -732,8 +732,8 @@ class CV_EXPORTS TrackerStateEstimatorAdaBoosting : public TrackerStateEstimator
   std::vector<int> computeSwappedClassifier();
 
  protected:
-  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps );
-  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps );
+  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
+  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
 
   Ptr<StrongClassifierDirectSelection> boostClassifier;
 
@@ -760,8 +760,8 @@ class CV_EXPORTS TrackerStateEstimatorSVM : public TrackerStateEstimator
   ~TrackerStateEstimatorSVM();
 
  protected:
-  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps );
-  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps );
+  Ptr<TrackerTargetState> estimateImpl( const std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
+  void updateImpl( std::vector<ConfidenceMap>& confidenceMaps ) CV_OVERRIDE;
 };
 
 /************************************ Specific TrackerSamplerAlgorithm Classes ************************************/
@@ -813,7 +813,7 @@ class CV_EXPORTS TrackerSamplerCSC : public TrackerSamplerAlgorithm
 
  protected:
 
-  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample );
+  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample ) CV_OVERRIDE;
 
  private:
 
@@ -860,7 +860,7 @@ class CV_EXPORTS TrackerSamplerCS : public TrackerSamplerAlgorithm
 
   ~TrackerSamplerCS();
 
-  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample );
+  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample ) CV_OVERRIDE;
   Rect getROI() const;
  private:
   Rect getTrackingROI( float searchFactor );
@@ -916,7 +916,7 @@ public:
      */
   TrackerSamplerPF(const Mat& chosenRect,const TrackerSamplerPF::Params &parameters = TrackerSamplerPF::Params());
 protected:
-  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample );
+  bool samplingImpl( const Mat& image, Rect boundingBox, std::vector<Mat>& sample ) CV_OVERRIDE;
 private:
   Params params;
   Ptr<MinProblemSolver> _solver;
@@ -939,13 +939,13 @@ class CV_EXPORTS TrackerFeatureFeature2d : public TrackerFeature
    */
   TrackerFeatureFeature2d( String detectorType, String descriptorType );
 
-  ~TrackerFeatureFeature2d();
+  ~TrackerFeatureFeature2d() CV_OVERRIDE;
 
-  void selection( Mat& response, int npoints );
+  void selection( Mat& response, int npoints ) CV_OVERRIDE;
 
  protected:
 
-  bool computeImpl( const std::vector<Mat>& images, Mat& response );
+  bool computeImpl( const std::vector<Mat>& images, Mat& response ) CV_OVERRIDE;
 
  private:
 
@@ -961,13 +961,13 @@ class CV_EXPORTS TrackerFeatureHOG : public TrackerFeature
 
   TrackerFeatureHOG();
 
-  ~TrackerFeatureHOG();
+  ~TrackerFeatureHOG() CV_OVERRIDE;
 
-  void selection( Mat& response, int npoints );
+  void selection( Mat& response, int npoints ) CV_OVERRIDE;
 
  protected:
 
-  bool computeImpl( const std::vector<Mat>& images, Mat& response );
+  bool computeImpl( const std::vector<Mat>& images, Mat& response ) CV_OVERRIDE;
 
 };
 
@@ -990,7 +990,7 @@ class CV_EXPORTS TrackerFeatureHAAR : public TrackerFeature
      */
   TrackerFeatureHAAR( const TrackerFeatureHAAR::Params &parameters = TrackerFeatureHAAR::Params() );
 
-  ~TrackerFeatureHAAR();
+  ~TrackerFeatureHAAR() CV_OVERRIDE;
 
   /** @brief Compute the features only for the selected indices in the images collection
     @param selFeatures indices of selected features
@@ -1005,7 +1005,7 @@ class CV_EXPORTS TrackerFeatureHAAR : public TrackerFeature
 
     @note This method modifies the response parameter
      */
-  void selection( Mat& response, int npoints );
+  void selection( Mat& response, int npoints ) CV_OVERRIDE;
 
   /** @brief Swap the feature in position source with the feature in position target
   @param source The source position
@@ -1025,7 +1025,7 @@ class CV_EXPORTS TrackerFeatureHAAR : public TrackerFeature
   CvHaarEvaluator::FeatureHaar& getFeatureAt( int id );
 
  protected:
-  bool computeImpl( const std::vector<Mat>& images, Mat& response );
+  bool computeImpl( const std::vector<Mat>& images, Mat& response ) CV_OVERRIDE;
 
  private:
 
@@ -1044,11 +1044,11 @@ class CV_EXPORTS TrackerFeatureLBP : public TrackerFeature
 
   ~TrackerFeatureLBP();
 
-  void selection( Mat& response, int npoints );
+  void selection( Mat& response, int npoints ) CV_OVERRIDE;
 
  protected:
 
-  bool computeImpl( const std::vector<Mat>& images, Mat& response );
+  bool computeImpl( const std::vector<Mat>& images, Mat& response ) CV_OVERRIDE;
 
 };
 
@@ -1088,7 +1088,7 @@ class CV_EXPORTS_W TrackerMIL : public Tracker
 
   CV_WRAP static Ptr<TrackerMIL> create();
 
-  virtual ~TrackerMIL() {}
+  virtual ~TrackerMIL() CV_OVERRIDE {}
 };
 
 /** @brief This is a real-time object tracking based on a novel on-line version of the AdaBoost algorithm.
@@ -1108,12 +1108,12 @@ class CV_EXPORTS_W TrackerBoosting : public Tracker
     int iterationInit;  //!<the initial iterations
     int featureSetNumFeatures;  //!< # features
     /**
-     * \brief Read parameters from file
+     * \brief Read parameters from a file
      */
     void read( const FileNode& fn );
 
     /**
-     * \brief Write parameters in a file
+     * \brief Write parameters to a file
      */
     void write( FileStorage& fs ) const;
   };
@@ -1125,7 +1125,7 @@ class CV_EXPORTS_W TrackerBoosting : public Tracker
 
   CV_WRAP static Ptr<TrackerBoosting> create();
 
-  virtual ~TrackerBoosting() {}
+  virtual ~TrackerBoosting() CV_OVERRIDE {}
 };
 
 /** @brief Median Flow tracker implementation.
@@ -1164,7 +1164,7 @@ class CV_EXPORTS_W TrackerMedianFlow : public Tracker
 
   CV_WRAP static Ptr<TrackerMedianFlow> create();
 
-  virtual ~TrackerMedianFlow() {}
+  virtual ~TrackerMedianFlow() CV_OVERRIDE {}
 };
 
 /** @brief TLD is a novel tracking framework that explicitly decomposes the long-term tracking task into
@@ -1195,11 +1195,11 @@ class CV_EXPORTS_W TrackerTLD : public Tracker
 
   CV_WRAP static Ptr<TrackerTLD> create();
 
-  virtual ~TrackerTLD() {}
+  virtual ~TrackerTLD() CV_OVERRIDE {}
 };
 
 /** @brief KCF is a novel tracking framework that utilizes properties of circulant matrix to enhance the processing speed.
- * This tracking method is an implementation of @cite KCF_ECCV which is extended to KFC with color-names features (@cite KCF_CN).
+ * This tracking method is an implementation of @cite KCF_ECCV which is extended to KCF with color-names features (@cite KCF_CN).
  * The original paper of KCF is available at <http://www.robots.ox.ac.uk/~joao/publications/henriques_tpami2015.pdf>
  * as well as the matlab implementation. For more information about KCF with color-names features, please refer to
  * <http://www.cvl.isy.liu.se/research/objrec/visualtracking/colvistrack/index.html>.
@@ -1227,12 +1227,12 @@ public:
     Params();
 
     /**
-    * \brief Read parameters from file, currently unused
+    * \brief Read parameters from a file
     */
     void read(const FileNode& /*fn*/);
 
     /**
-    * \brief Read parameters from file, currently unused
+    * \brief Write parameters to a file
     */
     void write(FileStorage& /*fs*/) const;
 
@@ -1261,7 +1261,7 @@ public:
 
   CV_WRAP static Ptr<TrackerKCF> create();
 
-  virtual ~TrackerKCF() {}
+  virtual ~TrackerKCF() CV_OVERRIDE {}
 };
 
 /** @brief GOTURN (@cite GOTURN) is kind of trackers based on Convolutional Neural Networks (CNN). While taking all advantages of CNN trackers,
@@ -1294,7 +1294,7 @@ public:
 
   CV_WRAP static Ptr<TrackerGOTURN> create();
 
-  virtual ~TrackerGOTURN() {}
+  virtual ~TrackerGOTURN() CV_OVERRIDE {}
 };
 
 /** @brief the MOSSE tracker
@@ -1309,7 +1309,7 @@ class CV_EXPORTS_W TrackerMOSSE : public Tracker
   */
   CV_WRAP static Ptr<TrackerMOSSE> create();
 
-  virtual ~TrackerMOSSE() {}
+  virtual ~TrackerMOSSE() CV_OVERRIDE {}
 };
 
 
@@ -1330,7 +1330,7 @@ public:
   /**
   * \brief Destructor
   */
-  ~MultiTracker();
+  ~MultiTracker() CV_OVERRIDE;
 
   /**
   * \brief Add a new object to be tracked.
@@ -1397,9 +1397,9 @@ public:
     targetNum = 0;
   }
 
-  /** @brief Add a new target to a tracking-list and initialize the tracker with a know bounding box that surrounding the target
+  /** @brief Add a new target to a tracking-list and initialize the tracker with a known bounding box that surrounded the target
   @param image The initial frame
-  @param boundingBox The initial boundig box of target
+  @param boundingBox The initial bounding box of target
   @param tracker_algorithm Multi-tracker algorithm
 
   @return True if new target initialization went succesfully, false otherwise
@@ -1461,6 +1461,73 @@ public:
 };
 
 //! @}
+
+/*********************************** CSRT ************************************/
+/** @brief Discriminative Correlation Filter Tracker with Channel and Spatial Reliability
+*/
+class CV_EXPORTS_W TrackerCSRT : public Tracker
+{
+public:
+  struct CV_EXPORTS Params
+  {
+    /**
+    * \brief Constructor
+    */
+    Params();
+
+    /**
+    * \brief Read parameters from file
+    */
+    void read(const FileNode& /*fn*/);
+
+    /**
+    * \brief Write parameters from file
+    */
+    void write(cv::FileStorage& fs) const;
+
+    bool use_hog;
+    bool use_color_names;
+    bool use_gray;
+    bool use_rgb;
+    bool use_channel_weights;
+    bool use_segmentation;
+
+    std::string window_function; //!<  Window function: "hann", "cheb", "kaiser"
+    float kaiser_alpha;
+    float cheb_attenuation;
+
+    float template_size;
+    float gsl_sigma;
+    float hog_orientations;
+    float hog_clip;
+    float padding;
+    float filter_lr;
+    float weights_lr;
+    int num_hog_channels_used;
+    int admm_iterations;
+    int histogram_bins;
+    float histogram_lr;
+    int background_ratio;
+    int number_of_scales;
+    float scale_sigma_factor;
+    float scale_model_max_area;
+    float scale_lr;
+    float scale_step;
+
+    float psr_threshold; //!< we lost the target, if the psr is lower than this.
+  };
+
+  /** @brief Constructor
+  @param parameters CSRT parameters TrackerCSRT::Params
+  */
+  static Ptr<TrackerCSRT> create(const TrackerCSRT::Params &parameters);
+
+  CV_WRAP static Ptr<TrackerCSRT> create();
+
+  CV_WRAP virtual void setInitialMask(InputArray mask) = 0;
+
+  virtual ~TrackerCSRT() CV_OVERRIDE {}
+};
 
 } /* namespace cv */
 
