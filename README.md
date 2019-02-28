@@ -33,6 +33,7 @@ http://space.bilibili.com/365916694/#/
 
 | 课程名称        | 语言          | 地址         |
 | ------------- |:-------------:| :-------------:|
+|Tensorflow+OpenCV实战行人检测|Python|https://edu.51cto.com/course/16898.html|
 | Tensorflow Object Detection API对象检测教程| Python| http://edu.51cto.com/course/15208.html |
 | Tensorflow零基础入门课程| Python| http://edu.51cto.com/course/14584.html |
 | OpenCV Python图像与视频分析教程| Python| http://edu.51cto.com/course/14029.html |
