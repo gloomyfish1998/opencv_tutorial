@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 cap = cv.VideoCapture("D:/images/video/vtest.avi")
-# https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/
 ret, frame1 = cap.read()
 prvs = cv.cvtColor(frame1,cv.COLOR_BGR2GRAY)
 hsv = np.zeros_like(frame1)
