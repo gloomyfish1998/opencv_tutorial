@@ -10,7 +10,22 @@
 https://www.bilibili.com/video/BV1i54y1m7tw
 
 ## 贾志刚
-2004毕业于山东大学齐鲁软件学院，软件工程专业。主要专注于图像处理算法学习与研究，计算机视觉技术应用开发，深度学习在计算机视觉领域应用。两本书籍《Java数字图像处理-编程技巧与应用实践》、《OpenCV Android开发实战》作者、51CTO学院金牌讲师、CSDN博客专家、专注图像处理与计算机视觉领域研究与开发多年、专业技术博客访问量超过320万次、精通OpenCV、ImageJ开源框架、图像对象检测与识别等应用开发技术。在对象检测、医学细胞检测与识别、文本处理、图像搜索、人脸美化算法方面有深入研究、开发过多个图像处理算法模块并成功应用在医学检测与工业领域。
+2004毕业于山东大学齐鲁软件学院，软件工程专业。主要专注于图像处理算法学习与研究，计算机视觉技术应用开发，深度学习在计算机视觉领域应用。两本书籍《Java数字图像处理-编程技巧与应用实践》、《OpenCV Android开发实战》作者、OpenCV开发专家，OpenCV学堂微信公众号号主、专注图像处理与计算机视觉领域研究与开发多年、专业技术博客访问量超过500万次、精通OpenCV、ImageJ开源框架、图像对象检测与识别等应用开发技术。在对象检测、医学细胞检测与识别、文本处理、图像搜索、人脸美化算法方面有深入研究、开发过多个图像处理算法模块并成功应用在医学检测与工业领域。线下培训人次超过上千人次，主要培训对象为高职院校老师与研究生，企业中高级开发技术人员！
+
+## 视频课程
+
+| 课程名称        | 语言          | 地址         |
+| ------------- |:-------------:| :-------------:|
+| CV开发工程师全栈技术路线图专题|C++/Python| https://ke.qq.com/course/package/38161 |
+| OpenCV4系统化学习路线图 | C++| https://ke.qq.com/course/package/38162 |
+| Pytorch框架CV开发-从入门到实战| Python| https://ke.qq.com/course/3520688 |
+| OpenCV4 图像处理与视频分析实战教程| C++| https://ke.qq.com/course/3547985 |
+|YOLOv5自定义对象检测-从训练到模型部署|Python/c++|https://ke.qq.com/course/3417367|
+| Tensorflow Object Detection API对象检测教程| Python| https://ke.qq.com/course/3417426 |
+| OpenVINO计算机视觉模型加速教程| c++/Python| https://ke.qq.com/course/3417485 |
+
+### 腾讯课堂主页
+https://opencvxuetang.ke.qq.com/
 
 
 ### 欢迎大家加入人工智能计算机视觉与深度学习社区
@@ -28,16 +43,6 @@ https://www.bilibili.com/video/BV1i54y1m7tw
 少看一场电影，少吃一顿大餐，就可以加持未来，99元学习就可以做到！
 ![](OpenCVRD.png)
 
-
-## 视频课程
-
-| 课程名称        | 语言          | 地址         |
-| ------------- |:-------------:| :-------------:|
-|YOLOv5自定义对象检测-从训练到模型部署|Python/c++|https://ke.qq.com/course/3417367|
-| Tensorflow Object Detection API对象检测教程| Python| https://ke.qq.com/course/3417426 |
-| OpenVINO计算机视觉模型加速教程| c++/Python| https://ke.qq.com/course/3417485 |
-| Pytorch框架CV开发-从入门到实战| Python| https://ke.qq.com/course/3520688 |
-| OpenCV4 图像处理与视频分析实战教程| C++| https://ke.qq.com/course/3547985 |
 
 ## 联系方式
 QQ:57558865 注明：opencv即可
