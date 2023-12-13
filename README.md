@@ -10,19 +10,17 @@
 https://www.bilibili.com/video/BV1i54y1m7tw
 
 ## 贾志刚
-2004毕业于山东大学齐鲁软件学院，软件工程专业。主要专注于图像处理算法学习与研究，计算机视觉技术应用开发，深度学习在计算机视觉领域应用。两本书籍《Java数字图像处理-编程技巧与应用实践》、《OpenCV Android开发实战》作者、OpenCV开发专家，OpenCV学堂微信公众号号主、专注图像处理与计算机视觉领域研究与开发多年、专业技术博客访问量超过500万次、精通OpenCV、ImageJ开源框架、图像对象检测与识别等应用开发技术。在对象检测、医学细胞检测与识别、文本处理、图像搜索、人脸美化算法方面有深入研究、开发过多个图像处理算法模块并成功应用在医学检测与工业领域。线下培训人次超过上千人次，主要培训对象为高职院校老师与研究生，企业中高级开发技术人员！
+三本书《Java数字图像处理-编程技巧与应用实践》、《OpenCV Android开发实战》、《OpenCV4应用开发-入门、进阶与工程化实践》作者。OpenCV实验大师平台 软件作者，OpenCV开发专家、全网博客访问量超600W、英特尔物联网创新大使、OpenVINO中文社区创始成员、OpenCV中国认证课程讲师
 
 ## 视频课程
 
-| 课程名称        | 语言          | 地址         |
-| ------------- |:-------------:| :-------------:|
-| CV开发工程师全栈技术路线图专题|C++/Python| https://ke.qq.com/course/package/38161 |
-| OpenCV4系统化学习路线图 | C++| https://ke.qq.com/course/package/38162 |
-| Pytorch框架CV开发-从入门到实战| Python| https://ke.qq.com/course/3520688 |
-| OpenCV4 图像处理与视频分析实战教程| C++| https://ke.qq.com/course/3547985 |
-|YOLOv5自定义对象检测-从训练到模型部署|Python/c++|https://ke.qq.com/course/3417367|
-| Tensorflow Object Detection API对象检测教程| Python| https://ke.qq.com/course/3417426 |
-| OpenVINO计算机视觉模型加速教程| c++/Python| https://ke.qq.com/course/3417485 |
+深度学习技术路线图(CV方向)-![深度学习路线图课程 - 2023版本](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_6523f845e4b0694ce9ed06a7?type=3&type=3)
+
+OpenCV4系统化学习路线图- ![OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
+
+Pytorch框架CV开发-从入门到实战 - ![2023全新录制-升级版Pytorch框架课程](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2WWDMWUkt8aDBK1hKM6vJiPmkWA?)
+
+YOLOv8对象检测实例分割与跟踪从训练到部署 - ![YOLOv8源码级结构解析与模型训练部署](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2VkdjLJjv3EXwi2bWxFfjZOg57e?)
 
 ### OpenCV4 系统化学习路线图专题（C++）
 - <b>OpenCV开发基础</b><br>
@@ -46,19 +44,28 @@ https://www.bilibili.com/video/BV1i54y1m7tw
 - <b>适合人群：</b><br>
 主要针对传统图象处理与深度学习模型部署使用，主要适合懂深度学习，但是不懂传统图象处理的人群，或者需要深入系统化学习OpenCV的开发者。
 
-- <b>扫码查看课程目录与学习！</b><br>
+OpenCV4系统化学习路线图- ![OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
 
+### OpenCV实验大师平台
+OpenCV实验大师平台一款OpenCV工程化开发效率提升与OpenCV教学质量提升的专业工具软件。作者花了400多个日日夜夜开发的软件，全免费给所有OpenCV开发者与爱好者使用。当前支持功能包含：
+- 涵盖机器视觉常用的图像处理、分析、测量等技术要点
+- 支持ONNX格式模型推理演示
+- OpenCV算法流程设计所见即所得
+- 支持插件模式，充分调动学生动手能力
+- 支持一键导出算法流程PDF文件
+- 提供超过20个OpenCV案例项目文件
+- OpenCV推理演示涵盖图像分类、对象检测、语义分割
+- 深度学习对象检测与语义分割数据标注支持
+- 支持Win10/Win11/Ubuntu下安装与使用
 
-![](OpenCV4_MAP.jpg)
-![](OpenCV4_roadmap.jpg)
-
+查看安装指南：![点击下载与安装OpenCV实验大师](https://mp.weixin.qq.com/s/a9ZyGHYadN61_Cz8n0bImg)
 
 ## 联系方式
 QQ:57558865 注明：opencv即可
 
 邮件:57558865@qq.com
 
-微信：bfnh2fish 注明 合作
+微信：bfnh2qxx 注明 合作
 
 <b>非技术合作请勿加微信</b>
 
@@ -66,7 +73,7 @@ QQ:57558865 注明：opencv即可
 
 CSDN博客地址： http://blog.csdn.net/jia20003
 
-腾讯课堂-课程主页：https://opencvxuetang.ke.qq.com/
+![贾志刚 视频课程主页 ](https://appetjpz4tj8166.h5.xiaoeknow.com/)
 
 ### OpenCV学堂 微信公众号
 ![](CVSCHOOL.jpg)
