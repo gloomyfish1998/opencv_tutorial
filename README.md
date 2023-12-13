@@ -14,13 +14,13 @@ https://www.bilibili.com/video/BV1i54y1m7tw
 
 ## 视频课程
 
-深度学习技术路线图(CV方向)-![深度学习路线图课程 - 2023版本](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_6523f845e4b0694ce9ed06a7?type=3&type=3)
+深度学习技术路线图(CV方向)-[深度学习路线图课程 - 2023版本](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_6523f845e4b0694ce9ed06a7?type=3&type=3)
 
-OpenCV4系统化学习路线图- ![OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
+OpenCV4系统化学习路线图- [OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
 
-Pytorch框架CV开发-从入门到实战 - ![2023全新录制-升级版Pytorch框架课程](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2WWDMWUkt8aDBK1hKM6vJiPmkWA?)
+Pytorch框架CV开发-从入门到实战 -[2023全新录制-升级版Pytorch框架课程](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2WWDMWUkt8aDBK1hKM6vJiPmkWA?)
 
-YOLOv8对象检测实例分割与跟踪从训练到部署 - ![YOLOv8源码级结构解析与模型训练部署](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2VkdjLJjv3EXwi2bWxFfjZOg57e?)
+YOLOv8对象检测实例分割与跟踪从训练到部署 - [YOLOv8源码级结构解析与模型训练部署](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/course_2VkdjLJjv3EXwi2bWxFfjZOg57e?)
 
 ### OpenCV4 系统化学习路线图专题（C++）
 - <b>OpenCV开发基础</b><br>
@@ -44,7 +44,7 @@ YOLOv8对象检测实例分割与跟踪从训练到部署 - ![YOLOv8源码级结
 - <b>适合人群：</b><br>
 主要针对传统图象处理与深度学习模型部署使用，主要适合懂深度学习，但是不懂传统图象处理的人群，或者需要深入系统化学习OpenCV的开发者。
 
-OpenCV4系统化学习路线图- ![OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
+OpenCV4系统化学习路线图- [OpenCV4最新版本C++工程化路线图](https://appetjpz4tj8166.h5.xiaoeknow.com/v1/goods/goods_detail/p_652e4266e4b0694ce9ee65da?type=3&type=3) 
 
 ### OpenCV实验大师平台
 OpenCV实验大师平台一款OpenCV工程化开发效率提升与OpenCV教学质量提升的专业工具软件。作者花了400多个日日夜夜开发的软件，全免费给所有OpenCV开发者与爱好者使用。当前支持功能包含：
@@ -58,7 +58,7 @@ OpenCV实验大师平台一款OpenCV工程化开发效率提升与OpenCV教学�
 - 深度学习对象检测与语义分割数据标注支持
 - 支持Win10/Win11/Ubuntu下安装与使用
 
-查看安装指南：![点击下载与安装OpenCV实验大师](https://mp.weixin.qq.com/s/a9ZyGHYadN61_Cz8n0bImg)
+查看安装指南：[点击下载与安装OpenCV实验大师](https://mp.weixin.qq.com/s/a9ZyGHYadN61_Cz8n0bImg)
 
 ## 联系方式
 QQ:57558865 注明：opencv即可
@@ -73,7 +73,7 @@ QQ:57558865 注明：opencv即可
 
 CSDN博客地址： http://blog.csdn.net/jia20003
 
-![贾志刚 视频课程主页 ](https://appetjpz4tj8166.h5.xiaoeknow.com/)
+[贾志刚 视频课程主页 ](https://appetjpz4tj8166.h5.xiaoeknow.com/)
 
 ### OpenCV学堂 微信公众号
 ![](CVSCHOOL.jpg)
